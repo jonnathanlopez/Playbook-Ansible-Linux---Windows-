@@ -1,0 +1,19 @@
+---
+#Multiplaybook de creación de grupo y usuario en Linux By Jonnathan López
+- name: Playbook para crear grupo y usuario en un mismo instante en host remotos
+  hosts: all #Modificar por el listado de hosts en el archivo /etc/ansible/hosts.
+  tasks:
+    - name: Playbook -------- Creando el grupo
+      group:
+        name: scrum #Modificar name_group por el nombre del grupo example name: groupdeveloper
+        gid: 3001 #Modificar gid_number example gid: 1001
+        state: present #Verificar si el grupo esta creado o no en el host remoto.
+    - name: Playbook --------- Creando el usuario
+      user:
+        name: scrum01 #Modificar james por el usuario a crear
+        comment: scrum01 creado 11-06-2020 #Comentario para el usuario
+        uid: 5001 #Modificar 3000 por el uid que tendrá el usuario nuevo
+        group: devops #Modificar jboss por el grupo donde estara el usuario, previamente creado el grupo
+        shell: /bin/bash #Si requiere /bin/bash
+        home: /home/scrum01 #Modificar el home del nuevo usuario
+        state: present

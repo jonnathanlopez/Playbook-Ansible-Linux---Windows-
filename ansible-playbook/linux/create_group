@@ -1,0 +1,10 @@
+---
+#Playbook para creación de Grupos en Linux By Jonnathan López
+- name: Playbook para crear grupos en host remotos
+  hosts: redhat #Modificar por el listado de hosts en el archivo /etc/ansible/hosts.
+  tasks:
+    - name: Creando el grupo
+      group:
+        name: jboss #Modificar name_group por el nombre del grupo example name: groupdeveloper
+        gid: 7000 #Modificar gid_number example gid: 1001
+        state: present #Verificar si el grupo esta creado o no en el host remoto.
